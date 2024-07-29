@@ -1,4 +1,4 @@
-# Dosa Orders Management System
+# Dosa Orders Management System API
 
 Welcome to the Dosa Restaurant API! This project provides a fastAPI for managing orders and customers of a Dosa restaurant. It enables functionalities like creating, updating, and retrieving orders, as well as managing customer information
 
