@@ -16,12 +16,13 @@ class Orders(BaseModel):
     notes: str
     timestamp : int
 
+#Initialize database connection
 connection = sqlite3.connect("db.sqlite")
 cursor = connection.cursor()
 
 app = FastAPI()
 
-
+#Code for items database to perform CRUD operations
 @app.get("/items/{item_id}")
 async def read_item(item_id):
     result = cursor.execute("SELECT * FROM items WHERE id=?;", (item_id,))
@@ -137,19 +138,7 @@ async def create_order(order: Orders):
         "notes" : notes
     }
 
-@app.put("/orders/{order_id}")
-async def update_orders(order_id, order: Orders):
-    timestamp = order.timestamp
-    customer_id = order.customer_id
-    notes = order.notes
-    cursor.execute("UPDATE orders SET timestamp=?, customer_id=?,notes=? WHERE id=?;",(timestamp,customer_id,notes,order_id))
-    connection.commit()
-    return{
-        "id" : order_id,
-        "timestamp" : timestamp,
-        "customer_id" : customer_id,
-        "notes" : notes
-    }
+
 
 
 
