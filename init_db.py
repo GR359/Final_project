@@ -34,47 +34,13 @@ cursor.execute('''CREATE TABLE IF NOT EXISTS order_items (
                 FOREIGN KEY (item_id) REFERENCES items(id) ON DELETE CASCADE ON UPDATE CASCADE
             )''')
 
-# Load data from example_orders.json
-with open('example_orders.json', 'r') as file:
-    data = json.load(file)
-
-# Populate customers table
-for order in data:
-    customer_name = order['name']
-    phone = order['phone']
-    
-    # Check if customer already exists
-    cursor.execute("SELECT id FROM customers WHERE name = ? AND phone = ?", (customer_name, phone))
-    existing_customer = cursor.fetchone()
-
-    if existing_customer:
-        customer_id = existing_customer[0]
-    else:
-        # Insert new customer
-        customer_id = cursor.execute("INSERT INTO customers (name, phone) VALUES (?, ?)", (customer_name, phone)).lastrowid
-
-    # Populate orders table
-    order_id = cursor.execute("INSERT INTO orders (timestamp, customer_id, notes) VALUES (?, ?, ?)", (order['timestamp'], customer_id, order['notes'])).lastrowid
-
-    # Populate items and order_items tables
-    for item in order['items']:
-        item_name = item['name']
-        item_price = item['price']
-        
-        # Check if item exists
-        cursor.execute("SELECT id FROM items WHERE name = ?", (item_name,))
-        existing_item = cursor.fetchone()
-        
-        if existing_item:
-            item_id = existing_item[0]  # ID of the existing item
-            
-            cursor.execute("INSERT INTO order_items (order_id, item_id) VALUES (?, ?)", (order_id, item_id))
-        else:
-            
-            item_id = cursor.execute("INSERT INTO items (name, price) VALUES (?, ?)", (item_name, item_price)).lastrowid
-            cursor.execute("INSERT INTO order_items (order_id, item_id) VALUES (?, ?)", (order_id, item_id))
-            
-            
-# Commit changes
-connection.commit()
-
+with open("customers.json") as f:
+    customers = json.load(f)
+    for phone, name in customers.items():
+        cursor.execute("INSERT INTO customers (name, phone) VALUES (?, ?);", (name,phone))
+with open("items.json") as f:
+    items = json.load(f)
+    for name, stats in items.items():
+        price = stats["price"]
+        number_of_orders = stats["orders"]
+        cursor.execute("INSERT INTO items (name, price) VALUES (?, ?);", (name,price))
