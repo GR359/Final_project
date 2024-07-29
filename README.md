@@ -20,18 +20,18 @@ This project is built using Python and SQLite databases. It utilizes the FastAPI
 - `db.sqlite`: The SQLite database file.
 - `example_orders.json` : Raw data file.
 
-## Setup and Installation
-1) Make sure python 3.x is installed in your system
-2) Clone the repo into the desired directory
-3) Ensure the JSON file with orders (example_orders.json) is placed in the correct directory as specified in the script or you can change the directory according to your configuration.
-4) After setting up, run the main.py pyhton file which will lauch the server.
-5) The server will start running on http://localhost:8000 by default.
-
 ## Prerequisites
 
 - Python 3.x
 - SQLite
 - FastAPI
+
+## Setup
+1) Make sure python 3.x is installed in your system
+2) Clone the repo into the desired directory
+3) Ensure the JSON file with orders (example_orders.json) is placed in the correct directory as specified in the script or you can change the directory according to your configuration.
+4) After setting up, run the main.py pyhton file which will lauch the server.
+5) The server will start running on http://localhost:8000 by default.
 
 ## Installation
 
