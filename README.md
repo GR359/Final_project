@@ -8,7 +8,7 @@ Order Management: Create, update, retrieve, and delete orders. Customer Manageme
 
 This project is built using Python and SQLite databases. It utilizes the FastAPI framework for building the RESTful API and SQLite for data storage.
 
-### Components
+## Components
 1) FastAPI: A modern, fast (high-performance), web framework for building APIs with Python.
 2) SQLite Database: A lightweight disk-based database that doesn't require a separate server process. Installation
 
@@ -26,13 +26,14 @@ This project is built using Python and SQLite databases. It utilizes the FastAPI
 3) Ensure the JSON file with orders (example_orders.json) is placed in the correct directory as specified in the script or you can change the directory according to your configuration.
 4) After setting up, run the main.py pyhton file which will lauch the server.
 5) The server will start running on http://localhost:8000 by default.
-### Prerequisites
+
+## Prerequisites
 
 - Python 3.x
 - SQLite
 - FastAPI
 
-### Installation
+## Installation
 
 1. **Clone the repository or download the files:**
 
@@ -51,13 +52,13 @@ This project is built using Python and SQLite databases. It utilizes the FastAPI
    fastapi dev main.py
    ```
 
-### API Endpoints
-## The API offers the following endpoints:
+## API Endpoints
+The API offers the following endpoints:
 1) Orders: CRUD operations for managing orders. Customers: CRUD operations for managing customer information. Items: CRUD operations for managing menu items. For detailed information about each endpoint, refer to the API documentation.
 2) API Documentation Explore the API documentation to learn about available endpoints and how to interact with them. You can access the documents at the location "http://127.0.0.1:8000/docs".
 
-### Contributing
+## Contributing
 Contributions to this project are welcome! If you encounter any issues or have suggestions for improvements, feel free to open an issue or submit a pull request. 
 
-### License
+## License
 This project is licensed under the MIT License.
