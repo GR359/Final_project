@@ -139,7 +139,19 @@ async def create_order(order: Orders):
     }
 
 
-
+@app.put("/orders/{order_id}")
+async def update_orders(order_id, order: Orders):
+    timestamp = order.timestamp
+    customer_id = order.customer_id
+    notes = order.notes
+    cursor.execute("UPDATE orders SET timestamp=?, customer_id=?,notes=? WHERE id=?;",(timestamp,customer_id,notes,order_id))
+    connection.commit()
+    return{
+        "id" : order_id,
+        "timestamp" : timestamp,
+        "customer_id" : customer_id,
+        "notes" : notes
+    }
 
 
 
